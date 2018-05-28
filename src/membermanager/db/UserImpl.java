@@ -1,13 +1,13 @@
 package membermanager.db;
 
 public class UserImpl implements User {
-    private String id;
+    private Long id;
     private String name;
     private String phonenumber;
     private String email;
     private String birth;
 
-    public String getId() {return id;}
+    public Long getId() {return id;}
     public String getName(){
         return name;
     }
@@ -21,7 +21,7 @@ public class UserImpl implements User {
         return birth;
     }
 
-    public void setId(String id) {this.id = id; }
+    public void setId(Long id) {this.id = id; }
     public void setName(String name){
         this.name = name;
     }
@@ -33,5 +33,9 @@ public class UserImpl implements User {
     }
     public void setBirth(String birth){
         this.birth = birth;
+    }
+
+    public String toString() {
+        return getName()+", " +getEmail()+", "+getPhonenumber()+", "+getBirth();
     }
 }

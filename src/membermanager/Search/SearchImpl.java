@@ -22,7 +22,6 @@ public class SearchImpl implements Search{
         System.out.println("4. 생년월일 검색");
         System.out.print("입력하세요(1~4) : ");
         num = scanner.nextInt();
-        System.out.println(num);
         switch(num) {
             case 1 :
                 System.out.print("이름 입력하세요. : ");
