@@ -5,14 +5,11 @@ import java.util.TreeMap;
 
 
 public class RepositoryImpl implements Repository{
+
+    final String operatingSystem = System.getProperty("os.name");
     @Override
     public UserImpl create(UserImpl user) {
         SingleTon.getInstance().setPut(user);
-        try {
-            Runtime.getRuntime().exec("cls");
-        }
-        catch (Exception e) {
-        }
         return user;
     }
 

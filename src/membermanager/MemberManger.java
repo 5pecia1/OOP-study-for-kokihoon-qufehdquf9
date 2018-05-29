@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class MemberManger {
     void run() {
+        final String operatingSystem = System.getProperty("os.name");
         int number;
         Scanner scanner = new Scanner(System.in);
         Register registerImpl = new RegisterImpl();
@@ -41,6 +42,15 @@ public class MemberManger {
                     case 4:
                         return;
 
+                    default:
+                        break;
+
+                }
+                if (operatingSystem .contains("Windows")) {
+                    Runtime.getRuntime().exec("cls");
+                }
+                else {
+                    Runtime.getRuntime().exec("clear");
                 }
             }catch (Exception e) {
                 scanner.nextLine();
