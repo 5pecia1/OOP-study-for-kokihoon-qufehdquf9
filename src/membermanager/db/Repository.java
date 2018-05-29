@@ -6,7 +6,7 @@ import java.util.List;
  *
  */
 public interface Repository {
-    User create(UserImpl user);
+    boolean create(UserImpl user);
     void read(String str);
     boolean delete(String key);
 }

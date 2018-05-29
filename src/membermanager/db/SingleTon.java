@@ -20,8 +20,20 @@ public class SingleTon {
         return test;
     }
 
-    public void setPut(UserImpl user) {
+    public boolean setPut(UserImpl user) {
+        for(Long test : treeMap.keySet()) {
+            User userImpl;
+            userImpl = treeMap.get(test);
+            if(((UserImpl)userImpl).getName().equals(user.getName())) {
+                if(((UserImpl)userImpl).getPhonenumber().equals(user.getPhonenumber())) {
+                    System.out.println("중복된 회원이 있습니다.");
+                    return false;
+                }
+            }
+        }
         treeMap.put(user.getId(), user);
+        System.out.println(user.getName()+"님이 회원가입 되었습니다.");
+        return true;
     }
 
     public List<User> getUser(String str) {

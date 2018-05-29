@@ -8,9 +8,11 @@ public class RepositoryImpl implements Repository{
 
     final String operatingSystem = System.getProperty("os.name");
     @Override
-    public UserImpl create(UserImpl user) {
-        SingleTon.getInstance().setPut(user);
-        return user;
+    public boolean create(UserImpl user) {
+        if(SingleTon.getInstance().setPut(user)){
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -24,12 +24,11 @@ public class RegisterImpl implements Register{
             ((UserImpl)userImpl).setEmail(scanner.nextLine());
             System.out.print("생년월일 입력(ex xxxx-xx-xx) : ");
             ((UserImpl)userImpl).setBirth(scanner.nextLine());
-            userImpl = repositoryImpl.create((UserImpl)userImpl);
-            System.out.println(((UserImpl) userImpl).getName()+"님이 가입되었습니다.");
-            break;
+            if(repositoryImpl.create((UserImpl)userImpl)){
+                return true;
+            }
+
+            return false;
         }
-        return true;
     }
-
-
 }
