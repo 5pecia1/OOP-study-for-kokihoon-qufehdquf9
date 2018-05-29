@@ -38,6 +38,6 @@ public class SearchImpl implements Search{
         }
         Repository repository = new RepositoryImpl();
         repository.read(search);
-        return false;
+        return true;
     }
 }

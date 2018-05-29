@@ -10,7 +10,6 @@ public class RepositoryImpl implements Repository{
         SingleTon.getInstance().setPut(user);
         try {
             Runtime.getRuntime().exec("cls");
-
         }
         catch (Exception e) {
         }
@@ -27,10 +26,11 @@ public class RepositoryImpl implements Repository{
     }
 
     @Override
-    public User delete(User user) {
-//        treeMap.remove(user.getClass());
-//        System.out.println("섹제 되었습니다.");
-//        System.out.flush();
-        return user;
+    public boolean delete(String key) {
+        if(SingleTon.getInstance().removeUser(key)){
+            System.out.println("삭제되었습니다.");
+            return true;
+        }
+        return false;
     }
 }

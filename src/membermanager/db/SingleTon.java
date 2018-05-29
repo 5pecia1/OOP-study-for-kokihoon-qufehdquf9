@@ -45,8 +45,14 @@ public class SingleTon {
         return userList;
     }
 
-    public Boolean removeUser(UserImpl user) {
-
-        return true;
+    public Boolean removeUser(String key) {
+        Long key_long = Long.parseLong(key);
+        for(Long test : treeMap.keySet()) {
+            if(test.equals(key_long)) {
+                treeMap.remove(test);
+                return true;
+            }
+        }
+        return false;
     }
 }

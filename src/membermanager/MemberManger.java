@@ -35,6 +35,7 @@ public class MemberManger {
                         searchImpl.run();
                         break;
                     case 3:
+                        searchImpl.run();
                         deleteImpl.run();
                         break;
                     case 4:
