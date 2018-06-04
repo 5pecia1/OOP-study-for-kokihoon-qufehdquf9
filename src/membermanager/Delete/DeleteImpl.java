@@ -2,12 +2,15 @@ package membermanager.Delete;
 
 import membermanager.db.Repository;
 import membermanager.db.RepositoryImpl;
-import membermanager.db.User;
-import membermanager.db.UserImpl;
+
 
 import java.util.Scanner;
 
 public class DeleteImpl implements Delete {
+    /**
+     * 삭제할 회원 id값을 입력받는 기능
+     * @return 삭제할 데이터가 있으면 참, 없으면 거짓 type(bool)
+     */
     @Override
     public boolean run() {
         Scanner scanner = new Scanner(System.in);

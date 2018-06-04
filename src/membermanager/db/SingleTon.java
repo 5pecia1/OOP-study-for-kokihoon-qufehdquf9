@@ -13,6 +13,9 @@ public class SingleTon {
         treeMap = new TreeMap<>();
     }
     public static SingleTon getInstance() {
+        /**
+         * 싱글톤 객체를 생성하는 기능
+         */
         if(test == null) {
             test = new SingleTon();
 
@@ -21,22 +24,26 @@ public class SingleTon {
     }
 
     public boolean setPut(UserImpl user) {
+        /**
+         * 데이터를 저장하는 기능
+         */
         for(Long test : treeMap.keySet()) {
             User userImpl;
             userImpl = treeMap.get(test);
             if(((UserImpl)userImpl).getName().equals(user.getName())) {
                 if(((UserImpl)userImpl).getPhonenumber().equals(user.getPhonenumber())) {
-                    System.out.println("중복된 회원이 있습니다.");
                     return false;
                 }
             }
         }
         treeMap.put(user.getId(), user);
-        System.out.println(user.getName()+"님이 회원가입 되었습니다.");
         return true;
     }
 
     public List<User> getUser(String str) {
+        /**
+         * 데이터를 검색해서 List 객체에 넣는 기능
+         */
         List<User> userList = new ArrayList<>();
         for (Long test : treeMap.keySet()) {
             User userImpl;
@@ -58,6 +65,9 @@ public class SingleTon {
     }
 
     public Boolean removeUser(String key) {
+        /**
+         * 데이터를 삭제하는 기능
+         */
         Long key_long = Long.parseLong(key);
         for(Long test : treeMap.keySet()) {
             if(test.equals(key_long)) {

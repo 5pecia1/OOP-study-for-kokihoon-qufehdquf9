@@ -1,6 +1,7 @@
 package membermanager.db;
 
 public class UserImpl implements User {
+
     private Long id;
     private String name;
     private String phonenumber;
