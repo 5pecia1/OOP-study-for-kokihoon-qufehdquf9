@@ -1,18 +1,22 @@
 package membermanager;
 
+import membermanager.Delete.Delete;
 import membermanager.Delete.DeleteImpl;
+import membermanager.Register.Register;
 import membermanager.Register.RegisterImpl;
+import membermanager.Search.Search;
 import membermanager.Search.SearchImpl;
 
 import java.util.Scanner;
 
 public class MemberManger {
     void run() {
+        final String operatingSystem = System.getProperty("os.name");
         int number;
         Scanner scanner = new Scanner(System.in);
-        RegisterImpl registerImpl = new RegisterImpl();
-        SearchImpl searchImpl = new SearchImpl();
-        DeleteImpl deleteImpl = new DeleteImpl();
+        Register registerImpl = new RegisterImpl();
+        Search searchImpl = new SearchImpl();
+        Delete deleteImpl = new DeleteImpl();
         while(true) {
             System.out.println("================================");
             System.out.println("         회원 관리 프로그램");
@@ -32,11 +36,21 @@ public class MemberManger {
                         searchImpl.run();
                         break;
                     case 3:
+                        searchImpl.run();
                         deleteImpl.run();
                         break;
                     case 4:
                         return;
 
+                    default:
+                        break;
+
+                }
+                if (operatingSystem .contains("Windows")) {
+                    Runtime.getRuntime().exec("cls");
+                }
+                else {
+                    Runtime.getRuntime().exec("clear");
                 }
             }catch (Exception e) {
                 scanner.nextLine();

@@ -1,10 +1,12 @@
 package membermanager.db;
 
+import java.util.List;
+
 /**
  *
  */
 public interface Repository {
     boolean create(UserImpl user);
-    boolean read(String str);
+    void read(String str);
     boolean delete(String key);
 }

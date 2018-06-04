@@ -3,34 +3,23 @@ package membermanager.Delete;
 import membermanager.db.Repository;
 import membermanager.db.RepositoryImpl;
 
-import java.util.Map;
+
 import java.util.Scanner;
 
 public class DeleteImpl implements Delete {
+    /**
+     * 삭제할 회원 id값을 입력받는 기능
+     * @return 삭제할 데이터가 있으면 참, 없으면 거짓 type(bool)
+     */
     @Override
     public boolean run() {
         Scanner scanner = new Scanner(System.in);
-        Map<String, String> treeMap1 = RepositoryImpl.treeMap;
-        Repository repository = new RepositoryImpl();
         System.out.print("삭제할 회원의 id 값을 입력하세요 : ");
-        String search = scanner.nextLine();
-        int question;
-        for (String test : treeMap1.keySet()) {
-            if(test.equals(search)){
-                System.out.println("다음 회원을 삭제하시겠습니까?");
-                System.out.println("회원 id : "+test);
-                System.out.println(treeMap1.get(test));
-
-                System.out.println("1. yes");
-                System.out.println("2. no");
-                System.out.print("입력해주세요(1~2) : ");
-                question = scanner.nextInt();
-                if(question == 1){
-                    repository.delete(search);
-                }
-            }
-        }
-
+        String key = scanner.nextLine();
+        Repository repositoryImpl = new RepositoryImpl();
+        repositoryImpl.delete(key);
         return true;
     }
 }
+
+

@@ -1,42 +1,45 @@
 package membermanager.db;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 
 public class RepositoryImpl implements Repository{
-    public static Map<String, String> treeMap = new TreeMap<String, String>();
+
     @Override
     public boolean create(UserImpl user) {
-        String id = user.getId();
-        String member = user.getName()+"\t"+user.getPhonenumber()+"\t"+user.getEmail()+"\t"+user.getBirth();
-        treeMap.put(id,member);
-        try {
-            Runtime.getRuntime().exec("cls");
+        /**
+         * 데이터가 삽입되었는지 출력하는 기능
+         */
+        if(SingleTon.getInstance().setPut(user)){
+            System.out.println(user.getName()+"님이 회원가입 되었습니다.");
+            return true;
         }
-        catch (Exception e) {
-
-        }
-        return true;
+        System.out.println("중복된 회원이 있습니다.");
+        return false;
     }
 
     @Override
-    public boolean read(String str) {
-        for (String test : treeMap.keySet()) {
-            if(treeMap.get(test).contains(str)){
-                System.out.println("회원 id : "+test);
-                System.out.println("이름\t전화번호\t이메일 주소\t생년월일");
-                System.out.println(treeMap.get(test));
-                System.out.flush();
-            }
+    public void read(String str) {
+        /**
+         * List 객체의 데이터를 출력하는 기능
+         */
+        List<User> userList = SingleTon.getInstance().getUser(str);
+        for(User test : userList) {
+            System.out.println(test.toString());
         }
-        return true;
+
     }
 
     @Override
     public boolean delete(String key) {
-        treeMap.remove(key);
-        System.out.println("섹제 되었습니다.");
-        System.out.flush();
-        return true;
+        /**
+         * 삭제된 데이터가 있으면 확인을 출력하는 기능
+         */
+        if(SingleTon.getInstance().removeUser(key)){
+            System.out.println("삭제되었습니다.");
+            return true;
+        }
+        return false;
     }
 }
